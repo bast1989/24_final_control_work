@@ -42,7 +42,7 @@ void PrintTwoArrays(string[] originalArr, string[] editedArr)
     for (int i = 0; i < originalArr.Length; i++)
     {
         Console.Write($"\"{originalArr[i]}\"");
-        if (i < originalArr.Length - 1)
+        if (i < originalArr.Length - 1) // расставляет запятые между всеми элементами кроме крайнего
         {
             Console.Write(", ");
         }
@@ -57,13 +57,37 @@ void PrintTwoArrays(string[] originalArr, string[] editedArr)
     for (int j = 0; j < editedArr.Length; j++)
     {
         Console.Write($"\"{editedArr[j]}\"");
-        if (j < editedArr.Length - 1)
+        if (j < editedArr.Length - 1) // расставляет запятые между всеми элементами кроме крайнего
         {
             Console.Write(", ");
         }
     }
 
     Console.Write("]");
+}
+
+string[] GenArr()
+{
+    Console.WriteLine("Введите количество элементов массива: ");
+    int lenArr = int.Parse(Console.ReadLine()!);
+    string[] strArr;
+    if (lenArr <= 0)
+    {
+        Console.WriteLine($"Извините значение не может быть: {lenArr}");
+        return strArr = new string[] {};
+    }
+    else
+    {
+        strArr = new string[lenArr];
+
+        for (int i = 0; i < strArr.Length; i++)
+        {
+            Console.Write($"Введите элемент {i + 1} из {lenArr}: ");
+            strArr[i] = Console.ReadLine()!;
+        }
+        
+        return strArr;
+    }
 }
 
 
@@ -85,6 +109,10 @@ Console.WriteLine("\n");
 string[] newArr_3 = ThreeAndUnder(arr_3);
 PrintTwoArrays(arr_3, newArr_3);
 
+Console.WriteLine("\n");
 
+string[] arr_4 = GenArr();
+string[] newArr_4 = ThreeAndUnder(arr_4);
+PrintTwoArrays(arr_4, newArr_4);
 
 
